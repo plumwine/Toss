@@ -2,6 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using Toss.Device;
+using Toss.Def;
+
 namespace Toss
 {
     /// <summary>
@@ -9,13 +12,18 @@ namespace Toss
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private GameDevice gameDevice; //ゲームデバイスオブジェクト
+        private Renderer renderer; //描画オブジェクト
+
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferWidth = Screen.Width;
+            graphics.PreferredBackBufferHeight = Screen.Height;
         }
 
         /// <summary>
@@ -27,7 +35,7 @@ namespace Toss
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            gameDevice = GameDevice.Instance(Content, GraphicsDevice);
             base.Initialize();
         }
 
@@ -38,7 +46,7 @@ namespace Toss
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            renderer = gameDevice.GetRenderer();
 
             // TODO: use this.Content to load your game content here
         }
@@ -62,6 +70,8 @@ namespace Toss
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+
+            gameDevice.Update(gameTime); //他のところでこれをやると入力処理がおかしくなる
             // TODO: Add your update logic here
 
             base.Update(gameTime);

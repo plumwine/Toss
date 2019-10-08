@@ -41,6 +41,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Def\Screen.cs" />
+    <Compile Include="Device\BGMLoader.cs" />
+    <Compile Include="Device\GameDevice.cs" />
+    <Compile Include="Device\Input.cs" />
+    <Compile Include="Device\Loader.cs" />
+    <Compile Include="Device\Renderer.cs" />
+    <Compile Include="Device\SELoader.cs" />
+    <Compile Include="Device\Sound.cs" />
+    <Compile Include="Device\TextureLoader.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,6 +67,11 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Actor\" />
+    <Folder Include="Scene\" />
+    <Folder Include="Util\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
