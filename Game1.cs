@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 using Toss.Device;
 using Toss.Def;
+using Toss.Scene;
 
 namespace Toss
 {
@@ -24,6 +25,7 @@ namespace Toss
 
             graphics.PreferredBackBufferWidth = Screen.Width;
             graphics.PreferredBackBufferHeight = Screen.Height;
+
         }
 
         /// <summary>
@@ -36,6 +38,7 @@ namespace Toss
         {
             // TODO: Add your initialization logic here
             gameDevice = GameDevice.Instance(Content, GraphicsDevice);
+            
             base.Initialize();
         }
 

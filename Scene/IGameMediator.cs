@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Toss.Scene
 {
-    enum Scene
+    interface IGameMediator
     {
-
-
-        Title,
-        GamePlay,
-        Ending,
-
+        void AddActor(Character character);
+        void AddScore();
+        void AddScore(int num);
     }
 }
