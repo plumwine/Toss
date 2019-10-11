@@ -60,7 +60,13 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scene\Ending.cs" />
+    <Compile Include="Scene\Gameplay.cs" />
+    <Compile Include="Scene\IGameMediator.cs" />
+    <Compile Include="Scene\IScene.cs" />
     <Compile Include="Scene\Scene.cs" />
+    <Compile Include="Scene\SceneManager.cs" />
+    <Compile Include="Scene\Title.cs" />
     <Compile Include="Util\CountDownTimer.cs" />
     <Compile Include="Util\Motion.cs" />
     <Compile Include="Util\Range.cs" />
