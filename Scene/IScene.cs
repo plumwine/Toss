@@ -17,5 +17,5 @@ namespace Toss.Scene
             bool IsEnd();
             Scene Next();
         }
-    }
+    
 }

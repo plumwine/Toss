@@ -32,7 +32,6 @@ namespace Toss.Scene
         {
             backGroundScene.Draw(renderer);
             renderer.Begin();
-            renderer.DrawTexture("ending", new Vector2(150, 150));
             renderer.End();
         }
         public void Initialize()
@@ -53,11 +52,11 @@ namespace Toss.Scene
         }
         public void Update(GameTime gameTime)
         {
-            sound.PlayBGM("endingbgm");
+            //sound.PlayBGM("endingbgm");
             if (Input.GetKeyTrigger(Keys.Space))
             {
                 isEndFlag = true;
-                sound.PlaySE("endingse");
+                //sound.PlaySE("endingse");
 
 
             }

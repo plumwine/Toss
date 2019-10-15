@@ -10,7 +10,7 @@ using Toss.Def;
 
 namespace Toss.Scene
 {
-    class Title 
+    class Title :IScene
     {
         private bool isEndFlag;
 
@@ -21,7 +21,10 @@ namespace Toss.Scene
 
         public void Draw(Renderer renderer)
         {
-            renderer.Begin();           
+            renderer.Begin();
+            renderer.DrawTexture("player_kari", new Vector2(100, 100));
+            renderer.DrawTexture("block", new Vector2(200, 200));
+            renderer.End();
         }
 
         public void Initialize()
@@ -29,10 +32,27 @@ namespace Toss.Scene
             isEndFlag = false;
         }
 
+        public bool IsEnd()
+        {
+            return isEndFlag;
+        }
+
         public Scene Next()
         {
             Scene nextScene = Scene.GamePlay;
             return nextScene;
+        }
+
+        public void Shutdown()
+        {
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            if(Input.IsKeyDown(Keys.Space))
+            {
+                isEndFlag = true;
+            }
         }
     }
     
