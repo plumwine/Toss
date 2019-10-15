@@ -17,7 +17,7 @@ namespace Toss.Scene
         private Player player;
         private Map map;
         private GameObjectManager objectManager;
-
+        private Spear spear;
 
         public void Initialize()
         {
@@ -29,8 +29,11 @@ namespace Toss.Scene
             map.Load("stagetest.csv");
             player = new Player(new Vector2(64, 700), GameDevice.Instance());
             player.Initialize();
+            spear = new Spear(player.GetPosition(), GameDevice.Instance(), player);
+            spear.Initialize();
             objectManager.Add(map);
             objectManager.Add(player);
+            objectManager.Add(spear);
 
         }
         public void Draw(Renderer renderer)

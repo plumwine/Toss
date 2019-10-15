@@ -198,6 +198,21 @@ namespace Toss.Device
                 );
         }
 
+        public void DrawTexture(string name, Vector2 position, float rotation, Vector2 origin)
+        {
+            spriteBatch.Draw(
+                textures[name],
+                position,
+                null,
+                Color.White,
+                rotation,
+                origin,
+                new Vector2(1, 1),
+                SpriteEffects.None,
+                1
+                );
+        }
+
 
         /// <summary>
         /// 画像の描画

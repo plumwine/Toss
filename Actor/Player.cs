@@ -150,12 +150,10 @@ namespace Toss.Actor
             {
                 tRank = timing.GetTiming();
                 //移動量を0にする
-                barrageSpeed = 0;
+                velocity.X = 0;
                 pAnim = PlayerAnim.Throw;  //アニメーションを投げに遷移
                 isThrow = true;
             }
-            
-
         }
         //アイドル状態
         public void IdleAnim()

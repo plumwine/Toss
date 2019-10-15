@@ -58,6 +58,7 @@ namespace Toss
             renderer = gameDevice.GetRenderer();
             renderer.LoadContent("block");
             renderer.LoadContent("player_kari");
+            renderer.LoadContent("Arrow");
 
             // TODO: use this.Content to load your game content here
         }
