@@ -42,6 +42,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Actor\Block.cs" />
+    <Compile Include="Actor\Effects\IParticleMediatorcs.cs" />
+    <Compile Include="Actor\Effects\Particle.cs" />
+    <Compile Include="Actor\Effects\ParticleBlue.cs" />
+    <Compile Include="Actor\Effects\ParticleManager.cs" />
     <Compile Include="Actor\GameObject.cs" />
     <Compile Include="Actor\GameObjectManager.cs" />
     <Compile Include="Actor\Map.cs" />
