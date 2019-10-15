@@ -71,6 +71,7 @@
     <Compile Include="Util\Motion.cs" />
     <Compile Include="Util\Range.cs" />
     <Compile Include="Util\Timer.cs" />
+    <Compile Include="Util\Timing.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
