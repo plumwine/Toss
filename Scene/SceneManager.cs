@@ -55,12 +55,7 @@ namespace Toss.Scene
             }
             currentScene.Draw(renderer);
         }
-
-        internal void Add(Scene gamePlay, object addScene)
-        {
-            throw new NotImplementedException();
-        }
-
+        
     }
 }
 

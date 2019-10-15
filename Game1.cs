@@ -16,7 +16,7 @@ namespace Toss
         private GraphicsDeviceManager graphics;
         private GameDevice gameDevice; //ゲームデバイスオブジェクト
         private Renderer renderer; //描画オブジェクト
-
+        private SceneManager sceneManager;
 
         public Game1()
         {
@@ -38,6 +38,12 @@ namespace Toss
         {
             // TODO: Add your initialization logic here
             gameDevice = GameDevice.Instance(Content, GraphicsDevice);
+
+            sceneManager = new SceneManager();
+            sceneManager.Add(Scene.Scene.Title, new Title());
+            sceneManager.Add(Scene.Scene.GamePlay, new Gameplay());
+            sceneManager.Add(Scene.Scene.Ending, new Ending());
+            sceneManager.Change(Scene.Scene.Title);
             
             base.Initialize();
         }
@@ -50,6 +56,8 @@ namespace Toss
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             renderer = gameDevice.GetRenderer();
+            renderer.LoadContent("block");
+            renderer.LoadContent("player_kari");
 
             // TODO: use this.Content to load your game content here
         }
@@ -76,7 +84,7 @@ namespace Toss
 
             gameDevice.Update(gameTime); //他のところでこれをやると入力処理がおかしくなる
             // TODO: Add your update logic here
-
+            sceneManager.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -87,7 +95,7 @@ namespace Toss
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            sceneManager.Draw(renderer);
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

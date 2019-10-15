@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Toss.Scene
 {
-    interface IGameMediator
-    {
-        void AddActor(Character character);
-        void AddScore();
-        void AddScore(int num);
-    }
+    //interface IGameMediator
+    //{
+    //    void AddActor(Character character);
+    //    void AddScore();
+    //    void AddScore(int num);
+    //}
 }

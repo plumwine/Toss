@@ -5,23 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
+using Toss.Device;
+
 namespace Toss.Actor
 {
     class Space : GameObject
     {
-        public Space(Vector2 position)
-            : base("", position, 64, 64)
+        public Space(Vector2 position,GameDevice gameDevice)
+            : base("", position, 64, 64,gameDevice)
         {
+        }
+        public Space(Space other)
+            : this(other.position, other.gameDevice)
+        { }
+
+        public override object Clone()
+        {
+            return new Space(this);
         }
 
         public override void Hit(GameObject gameObject)
         {
-            throw new NotImplementedException();
         }
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+        }
+        public override void Draw(Renderer renderer)
+        {
+            //スペースなので表示なし
         }
     }
 }

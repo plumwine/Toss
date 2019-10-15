@@ -27,38 +27,48 @@ namespace Toss.Actor
 
         private bool isGameSet;       //ゲームが終了しているか(種目が終わったか)
         
-        public Player(Vector2 position)
-            :base("player",position,64,64)
-        {
 
+        public Player(Vector2 position,GameDevice gameDevice)
+            :base("player_kari",position,64,64,gameDevice)
+        {
+            this.position = position;
         }
+
+        public Player(Player other)
+            : this(other.position, other.gameDevice)
+        { }
         //初期化
         public void Initialize()
         {
             barrageSpeed = 0;          //最初は止まっているので0
             tRank = TimingRank.NULL;   //最初は評価無し
             isGameSet = false;
+            
         }
 
+        public override object Clone()
+        {
+            return new Player(this);   
+        }
 
         public override void Hit(GameObject gameObject)
         {
-
 
         }
 
         public override void Update(GameTime gameTime)
         {
-            
+            PlayerMove(gameTime);
+            Barrage();
         }
 
         private void PlayerMove(GameTime gameTime)
         {
             if (isGameSet) return;
+            
+            velocity.X = barrageSpeed;
 
-            velocity.X += barrageSpeed;
-
-            position = velocity;
+            position += velocity;
         }
 
         /// <summary>

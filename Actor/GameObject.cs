@@ -14,14 +14,14 @@ namespace Toss.Actor
     {
         Top, Bottom, Right, Left
     }
-    abstract class GameObject
+    abstract class GameObject :ICloneable
     {
 
         protected string name;
         protected Vector2 position;
         protected int width;
         protected int height;
-        protected bool isDeadFlag;
+        protected GameDevice gameDevice;　　　　　      
 
         /// <summary>
         /// コンストラクタ
@@ -30,12 +30,13 @@ namespace Toss.Actor
         /// <param name="position"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public GameObject(string name, Vector2 position, int width, int height)
+        public GameObject(string name, Vector2 position, int width, int height,GameDevice gameDevice)
         {
             this.name = name;
             this.position = position;
             this.width = width;
             this.height = height;
+            this.gameDevice = gameDevice;
         }
 
         /// <summary>
@@ -71,6 +72,7 @@ namespace Toss.Actor
             return height;
         }
         //抽象メソッド
+        public abstract object Clone();
         public abstract void Update(GameTime gameTime);   //更新
         public abstract void Hit(GameObject gameObject);  //ヒット通知
 
@@ -93,7 +95,7 @@ namespace Toss.Actor
         /// <param name="renderer">描画オブジェクト</param>
         public virtual void Draw(Renderer renderer)
         {
-            renderer.DrawTexture(name, position);
+            renderer.DrawTexture(name, position+ gameDevice.GetDisplayModify());
         }
         //矩形の生成
         public Rectangle GetRectangle()

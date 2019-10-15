@@ -23,14 +23,21 @@ namespace Toss.Actor
         {
             Dictionary<string, GameObject> objectDict = new Dictionary<string, GameObject>();
 
+            objectDict.Add("0", new Space(Vector2.Zero,gameDevice));  //スペース
+            objectDict.Add("1", new Block(Vector2.Zero,gameDevice));  //地面
+
+
+            //作業リスト
             List<GameObject> workList = new List<GameObject>();
-            int colCnt = 0;
+
+            int colCnt = 0; //列カウント用
+            //渡された1行から1つずつ作業リストに登録
             foreach (var s in line)
             {
                 try
                 {
                     //ディクショナリから元データ取り出し、クローン機能で複製
-                    GameObject work = (GameObject)objectDict[s];
+                    GameObject work = (GameObject)objectDict[s].Clone();
                     work.SetPosition(new Vector2(colCnt * work.GetHeight(), lineCnt * work.GetWidth()));
                     workList.Add(work);
                 }
@@ -38,17 +45,13 @@ namespace Toss.Actor
                 {
                     Console.WriteLine(e);
                 }
+                //列カウンタを増やす
                 colCnt += 1;
 
             }
             return workList;
-            
+
         }
-        /// <summary>
-        /// CSVReaderを使ってMapの読み込み
-        /// </summary>
-        /// <param name="filename"></param>
-        /// <param name="path"></param>
         public void Load(string filename, string path = "./")
         {
             CSVReader csvReader = new CSVReader();
@@ -62,9 +65,6 @@ namespace Toss.Actor
                 mapList.Add(addBlock(lineCnt, data[lineCnt]));
             }
         }
-
-
-
         /// <summary>
         /// マップリストのクリア
         /// </summary>
@@ -96,8 +96,8 @@ namespace Toss.Actor
         {
             Point work = gameObject.GetRectangle().Location;      //左上の座標くぉ取得
                                                                   //配列の何行何列目にいるかを計算
-            int x = work.X / 32;
-            int y = work.Y / 32;
+            int x = work.X / 64;
+            int y = work.Y / 64;
             //移動で食い込んでいる時の修正
             if (x < 1)
             {
